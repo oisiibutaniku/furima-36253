@@ -28,13 +28,14 @@ Association
 | category_id         | integer    | null: false                  |カテゴリ(プルダウン)
 | state_id            | integer    | null: false                  |状態(プルダウン)
 | burden_id           | integer    | null: false                  |負担金額(プルダウン)
-| area_id             | integer    | null: false                  |発送地域(プルダウン)
+| prefecture_id       | references | null: false foreign_key: true|発送地域(プルダウン)
 | day_id              | integer    | null: false                  |発送日数(プルダウン)
 | price               | integer    | null: false                  |値段
 
 Association
 - has_many   :comments
 - belongs_to :user
+- belongs_to :address
 - has_one  :purchase
 
 
@@ -44,10 +45,6 @@ Association
 | ------------------- | ---------- | ----------- |
 | item                | references | null: false foreign_key: true|商品
 | user                | references | null: false foreign_key: true|ユーザー
-| number              | integer    | null: false                  |番号
-| expiration_month    | integer    | null: false                  |有効期限(月)
-| expiration_year     | integer    | null: false                  |有効期限(年)
-| security_code       | integer    | null: false                  |セキュリティコード
 
 Association
 - belongs_to :user
@@ -58,14 +55,16 @@ Association
 
 | Column              | Type   | Options     |
 | ------------------- | ---------- | ----------- |
-| Postal_code         | integer    | null: false |郵便番号
+| postal_code         | integer    | null: false |郵便番号
 | prefecture          | integer    | null: false |都道府県(プルダウン)
 | city                | string     | null: false |市町村
 | street              | string     | null: false |番地
-| building            | string     | null: false |建物
+| building            | string     |             |建物
 | phone               | integer    | null: false |電話番号
 
 Association
+- has_many :items
+
 
 
 ## comments テーブル

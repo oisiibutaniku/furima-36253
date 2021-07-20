@@ -2,52 +2,66 @@
 
 ## users テーブル
 
-| Column              | Type   | Options     |
-| ------------------- | ------ | ----------- |
-| nickname            | string | null: false |ニックネーム
-| email               | string | null: false |メールアドレス
-| encrypted_password  | string | null: false |パスワード
-| c_family_name       | string | null: false |姓
-| c_first_name        | string | null: false |名
-| k_family_name       | string | null: false |セイ
-| k_first_name        | string | null: false |メイ
-| birth_year          | integer| null: false |生年(プルダウン)
-| birth_month         | integer| null: false |月(プルダウン)
-| birth_day           | integer| null: false |日(プルダウン)
+| Column             | Type   | Options          |
+| ------------------ | ------ | ---------------- |
+| nickname           | string | null: false      |ニックネーム
+| email              | string | null: false      |メールアドレス
+| encrypted_password | string | null: false      |パスワード
+| c_family_name      | string | null: false      |姓
+| c_first_name       | string | null: false      |名
+| k_family_name      | string | null: false      |セイ
+| k_first_name       | string | null: false      |メイ
+| birthday           | date   | null: false      |生年月日(プルダウン)
 
 Association
 - has_many :comments
 - has_many :items
-- has_one  :credit_cord
+- has_many :purchases
+- has_one  :address
 
 ## items テーブル
 
-| Column              | Type   | Options     |
-| ------------------- | ------ | ----------- |
-| image               |        |             |画像
-| product             | string | null: false |商品名
-| explanation         | text   | null: false |説明
-| category            | integer| null: false |カテゴリ(プルダウン)
-| state               | integer| null: false |状態(プルダウン)
-| burden              | integer| null: false |負担金額(プルダウン)
-| area                | integer| null: false |発送地域(プルダウン)
-| day                 | integer| null: false |発送日数(プルダウン)
-| price               | integer| null: false |値段
-| favorite            | integer| null: false |お気に入り
+| Column              | Type       | Options                      |
+| ------------------- | ---------- | ---------------------------- |
+| user                | references | null: false foreign_key: true|ユーザー
+| product             | string     | null: false                  |商品名
+| explanation         | text       | null: false                  |説明
+| category_id         | integer    | null: false                  |カテゴリ(プルダウン)
+| state_id            | integer    | null: false                  |状態(プルダウン)
+| burden_id           | integer    | null: false                  |負担金額(プルダウン)
+| area_id             | integer    | null: false                  |発送地域(プルダウン)
+| day_id              | integer    | null: false                  |発送日数(プルダウン)
+| price               | integer    | null: false                  |値段
 
 Association
 - has_many   :comments
 - belongs_to :user
+- has_one  :purchase
 
 
-## credit_cordsテーブル
+##  purchasesテーブル
 
 | Column              | Type   | Options     |
-| ------------------- | ------ | ----------- |
-| number              | integer    | null: false |番号
-| expiration_month    | integer    | null: false |有効期限(月)
-| expiration_year     | integer    | null: false |有効期限(年)
-| security_code       | integer    | null: false |セキュリティコード
+| ------------------- | ---------- | ----------- |
+| item                | references | null: false foreign_key: true|商品
+| user                | references | null: false foreign_key: true|ユーザー
+| buy_year            | integer    | null: false                  |購入年
+| buy_month           | integer    | null: false                  |購入月
+| buy_day             | integer    | null: false                  |購入日
+| number              | integer    | null: false                  |番号
+| expiration_month    | integer    | null: false                  |有効期限(月)
+| expiration_year     | integer    | null: false                  |有効期限(年)
+| security_code       | integer    | null: false                  |セキュリティコード
+
+Association
+- belongs_to :user
+- belongs_to :item
+
+
+## addressesテーブル
+
+| Column              | Type   | Options     |
+| ------------------- | ---------- | ----------- |
 | Postal_code         | integer    | null: false |郵便番号
 | prefecture          | integer    | null: false |都道府県(プルダウン)
 | city                | string     | null: false |市町村
@@ -57,6 +71,7 @@ Association
 
 Association
 - belongs_to :user
+
 
 ## comments テーブル
 

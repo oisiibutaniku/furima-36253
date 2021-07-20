@@ -48,14 +48,14 @@ Association
 Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :purchase
+- has_one :address
 
 
 ## addressesテーブル
 
 | Column              | Type   | Options     |
 | ------------------- | ---------- | ----------- |
-| postal_code         | integer    | null: false                  |郵便番号
+| postal_code         | string     | null: false                  |郵便番号
 | prefecture_id       | integer    | null: false                  |都道府県(プルダウン)
 | city                | string     | null: false                  |市町村
 | street              | string     | null: false                  |番地
@@ -64,7 +64,7 @@ Association
 | purchase            |references  | null: false foreign_key: true|購入履歴
 
 Association
-- has_many :purchases
+- belongs_to :purchase
 
 
 

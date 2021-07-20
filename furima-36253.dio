@@ -81,7 +81,7 @@
                 <mxCell id="92" value="user(references型)" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;align=center;fillColor=#f9f7ed;strokeColor=#36393d;" vertex="1" parent="14">
                     <mxGeometry y="26" width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value="postal_code(integer型, NOT NULL)" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;align=center;fillColor=#f9f7ed;strokeColor=#36393d;" parent="14" vertex="1">
+                <mxCell id="40" value="postal_code(string型, NOT NULL)" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;align=center;fillColor=#f9f7ed;strokeColor=#36393d;" parent="14" vertex="1">
                     <mxGeometry y="56" width="240" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="39" value="prefecture_id(references型)" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;align=center;fillColor=#f9f7ed;strokeColor=#36393d;" parent="14" vertex="1">
@@ -167,7 +167,7 @@
                 <mxCell id="94" value="&lt;br&gt;" style="resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="93">
                     <mxGeometry x="1" relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="98" value="" style="endArrow=ERmany;html=1;rounded=0;startSize=30;endSize=30;endFill=0;startArrow=ERone;startFill=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.11;exitY=0.005;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="14" target="77">
+                <mxCell id="98" value="" style="endArrow=ERone;html=1;rounded=0;startSize=30;endSize=30;endFill=0;startArrow=ERone;startFill=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.11;exitY=0.005;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="14" target="77">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="80" y="300" as="sourcePoint"/>
                         <mxPoint x="120" y="400" as="targetPoint"/>

@@ -2,22 +2,21 @@
 
 ## users テーブル
 
-| Column             | Type   | Options          |
-| ------------------ | ------ | ---------------- |
-| nickname           | string | null: false      |ニックネーム
-| email              | string | null: false      |メールアドレス
-| encrypted_password | string | null: false      |パスワード
-| c_family_name      | string | null: false      |姓
-| c_first_name       | string | null: false      |名
-| k_family_name      | string | null: false      |セイ
-| k_first_name       | string | null: false      |メイ
-| birthday           | date   | null: false      |生年月日(プルダウン)
+| Column             | Type   | Options                        |
+| ------------------ | ------ | ------------------------------ |
+| nickname           | string | null: false                    |ニックネーム
+| email              | string | unique: true, null: false      |メールアドレス
+| encrypted_password | string | null: false                    |パスワード
+| c_family_name      | string | null: false                    |姓
+| c_first_name       | string | null: false                    |名
+| k_family_name      | string | null: false                    |セイ
+| k_first_name       | string | null: false                    |メイ
+| birthday           | date   | null: false                    |生年月日(プルダウン)
 
 Association
 - has_many :comments
 - has_many :items
 - has_many :purchases
-- has_one  :address
 
 ## items テーブル
 
@@ -45,9 +44,6 @@ Association
 | ------------------- | ---------- | ----------- |
 | item                | references | null: false foreign_key: true|商品
 | user                | references | null: false foreign_key: true|ユーザー
-| buy_year            | integer    | null: false                  |購入年
-| buy_month           | integer    | null: false                  |購入月
-| buy_day             | integer    | null: false                  |購入日
 | number              | integer    | null: false                  |番号
 | expiration_month    | integer    | null: false                  |有効期限(月)
 | expiration_year     | integer    | null: false                  |有効期限(年)
@@ -70,7 +66,6 @@ Association
 | phone               | integer    | null: false |電話番号
 
 Association
-- belongs_to :user
 
 
 ## comments テーブル

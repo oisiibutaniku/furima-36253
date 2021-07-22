@@ -7,9 +7,9 @@ class User < ApplicationRecord
          
          with_options presence: true do
           validates :nickname,:birthday
-         end
+         
 
-         validates :password,
+         validates :password, presence: true,
          format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/,
          message: "is invalid. Include both letters and numbers"}#半角英数字
 
@@ -20,5 +20,6 @@ class User < ApplicationRecord
          validates :k_family_name, :k_first_name, presence: true,
          format: {with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
           message: "is invalid. Input full-width katakana characters"}#カタカナオンリー
+        end
 
 end

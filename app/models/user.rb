@@ -8,9 +8,7 @@ class User < ApplicationRecord
          with_options presence: true do
          validates :nickname
          validates :birthday
-         with_options format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/, message: "is invalid. Include both letters and numbers"} do#半角英数字
-          validates :password
-         end
+         validates :password, format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/, message: "is invalid. Include both letters and numbers"} #半角英数字
          with_options format: {with: /\A[ぁ-んァ-ン一-龥々ー]+\z/, message: "is invalid. Input full-width characters"} do#全角オンリー
           validates :c_family_name
           validates :c_first_name

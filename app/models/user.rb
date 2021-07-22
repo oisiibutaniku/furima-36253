@@ -5,15 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          
-         validates :nickname, presence: true
-         validates :birthday, presence: true
+         with_options presence: true do
+          validates :nickname,:birthday
+         end
 
          validates :password,
          format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/,
          message: "is invalid. Include both letters and numbers"}#半角英数字
 
          validates :c_family_name, :c_first_name, presence: true,
-         format: {with: /\A[ぁ-んァ-ン一-龥]/,
+         format: {with: /\A[ぁ-んァ-ン一-龥々ー]+\z/,
           message: "is invalid. Input full-width characters"}#全角オンリー
 
          validates :k_family_name, :k_first_name, presence: true,

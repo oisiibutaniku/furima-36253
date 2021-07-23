@@ -14,7 +14,6 @@
 | birthday           | date   | null: false                    |生年月日(プルダウン)
 
 Association
-- has_many :comments
 - has_many :items
 - has_many :purchases
 
@@ -33,7 +32,6 @@ Association
 | price               | integer    | null: false                  |値段
 
 Association
-- has_many   :comments
 - belongs_to :user
 - has_one  :purchase
 
@@ -66,18 +64,4 @@ Association
 Association
 - belongs_to :purchase
 
-
-
-## comments テーブル
-
-| Column    | Type       | Options                      |
-| ------    | ---------- | ---------------------------- |
-| text      | text       | null: false                  |コメント
-| user      | references | null: false foreign_key: true|ユーザー
-| item      | references | null: false foreign_key: true|商品
-
-Association
-
-- belongs_to :user
-- belongs_to :item
 

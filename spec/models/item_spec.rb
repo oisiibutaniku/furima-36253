@@ -30,33 +30,33 @@ end
       expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
       it '商品のカテゴリーが初期値なら登録できない' do
-      @item.category_id = '1'
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it '商品の状態が初期値なら登録できない' do
-      @item.state_id = '1'
+      @item.state_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("State can't be blank")
       end
       it '配送料の負担が初期値なら登録できない' do
-      @item.burden_id = '1'
+      @item.burden_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Burden can't be blank")
       end
       it '発送元の地域が初期値なら登録できない' do
-      @item.prefecture_id = '1'
+      @item.prefecture_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '発送までの日数が初期値なら登録できない' do
-      @item.day_id = '1'
+      @item.day_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Day can't be blank")
       end
   
       it '価格が空なら登録できない' do
-      @item.price = ''
+      @item.price = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Price can't be blank")
         end
@@ -70,6 +70,25 @@ end
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters")
           end
+          it '価格が半角英字のみでは登録できない' do
+            @item.price = 'aaaaaa'
+            @item.valid?
+            expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters")
+            end
+            it '価格が全角文字では登録できない' do
+              @item.price = 'AAAAAあ９'
+              @item.valid?
+              expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters")
+              end
+              it 'ユーザーが紐付いていないと出品できない' do
+                @item.user = nil
+                @item.valid?
+                expect(@item.errors.full_messages).to include("User must exist")
+                end
+  
+  
+  
+
    end
   end
 

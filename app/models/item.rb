@@ -16,13 +16,13 @@ validates :price
 validates :image
 validates :category_id, :state_id,:burden_id,:prefecture_id,:day_id
   end
-#ジャンルの選択が「--」の時は保存できないようにする
-validates :category_id, numericality: { other_than: 1 , message: "can't be blank"} 
-validates :state_id, numericality: { other_than: 1 , message: "can't be blank"}
-validates :burden_id, numericality: { other_than: 1 , message: "can't be blank"}
-validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
-validates :day_id, numericality: { other_than: 1 , message: "can't be blank"}
-
+with_options numericality: { other_than: 1 , message: "can't be blank"} do
+validates :category_id
+validates :state_id
+validates :burden_id
+validates :prefecture_id
+validates :day_id
+end
 validates :price, inclusion: { in: 300..9_999_999, message: "is out of setting range"}
 validates :price, numericality: { only_integer: true,message: "is invalid. Input half-width characters"} 
 end

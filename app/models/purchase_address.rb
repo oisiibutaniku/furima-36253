@@ -9,6 +9,8 @@ class PurchaseAddress
     validates :street
     validates :phone
     validates :token
+    validates :user_id
+    validates :item_id
     validates :phone, length: {minimum:10, maximum:11}
     validates :phone,format: {with: /\A[0-9]+\z/, message: "number is invalid. Input only number"}
   end

@@ -68,12 +68,12 @@ RSpec.describe PurchaseAddress, type: :model do
       it '電話番号は10桁以下なら登録できない' do
         @purchase_address.phone = '090'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone is too short (minimum is 10 characters")
+        expect(@purchase_address.errors.full_messages).to include("Phone is too short (minimum is 10 characters)")
         end
       it '電話番号は11桁以上なら登録できない' do
         @purchase_address.phone = '090123456789'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone is too long (maximum is 11 characters")
+        expect(@purchase_address.errors.full_messages).to include("Phone is too long (maximum is 11 characters)")
       end
       it '電話番号が全角数字なら登録できない' do
         @purchase_address.phone = '０９０１２３４５６７８'

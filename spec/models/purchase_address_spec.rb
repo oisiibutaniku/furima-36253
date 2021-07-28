@@ -73,13 +73,13 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Postal code is invalid. Enter it as follows (e.g. 123-4567)")
       end
-      it '電話番号は10桁以下なら購入できない' do
+      it '電話番号は9桁以下なら購入できない' do
         @purchase_address.phone = '090'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phone is too short (minimum is 10 characters)")
         end
-      it '電話番号は11桁以上なら購入できない' do
-        @purchase_address.phone = '090123456789'
+      it '電話番号は12桁以上なら購入できない' do
+        @purchase_address.phone = '090123456789111111'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phone is too long (maximum is 11 characters)")
       end

@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :burden
   belongs_to :prefecture
   belongs_to :day
+  has_one    :purchase
 
   with_options presence: true do
 validates :product

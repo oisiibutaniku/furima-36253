@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -24,6 +25,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.purchases.present?
+    redirect_to root_path
+    end
+  
   end
 
   def update

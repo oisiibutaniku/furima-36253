@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [ :index, :create, :update, :destroy]
+  before_action :set_order
+  before_action :require_permission
   
   def index
   @purchase_address = PurchaseAddress.new
-  if current_user.id == @item.user_id || @item.purchases.present?
-    redirect_to root_path
-    end
   end
 
   def create
@@ -20,14 +18,14 @@ class OrdersController < ApplicationController
     end
   end
 
-
+  
 
   private
 
   def purchase_params
   params.require(:purchase_address).permit(:postal_code, :prefecture_id, :city, :street, :building , :phone).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token])
   end
-  def set_item
+  def set_order
     @item = Item.find(params[:item_id])
     end 
   def pay_item
@@ -38,6 +36,12 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
+  def require_permission
+    if current_user.id == @item.user_id || @item.purchase.present?
+      redirect_to root_path
+    end
+  end
+
 
 end
 

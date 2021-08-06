@@ -50,12 +50,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end 
   def require_permission
-    unless @item.user_id == current_user.id
-      redirect_to root_path
-    end
-    if @item.purchase.present?
-      redirect_to root_path
-    end
+    redirect_to root_path unless @item.user_id == current_user.id && @item.purchase.blank?
   end
+ 
 
 end
